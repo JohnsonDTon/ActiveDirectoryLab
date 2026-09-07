@@ -5,8 +5,8 @@ Will use powershell and avoid doing things via GUI as much as possible. </br>
 This lab is in progress. I use Windows Server 2025 Standard Edition and Windows 11 Pro for end-users in this lab.
 
 ### Network Layout
-Domain: adlab.test / ADLAB
-Network Range: 192.168.100.0/24
+Domain: adlab.test / ADLAB <br>
+Network Range: 192.168.100.0/24 <br>
 DHCP Scope: 192.168.100.20 - 192.168.100.254
 
 | System | Role | IP Address |
