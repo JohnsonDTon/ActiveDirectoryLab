@@ -7,7 +7,7 @@ This lab is in progress. I use Windows Server 2025 Standard Edition and Windows 
 ### Network Layout
 Domain: adlab.test / ADLAB <br>
 Network Range: 192.168.100.0/24 <br>
-DHCP Scope: 192.168.100.20 - 192.168.100.254
+DHCP Scope: 192.168.100.50 - 192.168.100.254
 
 | System | Role | IP Address |
 |---|---|---|
