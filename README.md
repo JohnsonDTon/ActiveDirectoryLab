@@ -15,3 +15,37 @@ DHCP Scope: 192.168.100.50 - 192.168.100.254
 | DC2 | Secondary Domain Controller | 192.168.100.11 |
 | FILE01 | File Server | 192.168.100.20 |
 | CLIENTx | Domain-Joined Computer(s) | DHCP |
+
+### OU Structure
+
+```text
+ADLAB.TEST
+│
+├── User Accounts
+│   ├── IT
+│   ├── HR
+│   ├── Finance
+│   └── Standard Users
+│
+├── Workstations
+│   ├── IT
+│   ├── HR
+│   ├── Finance
+│   └── Standard Users
+│
+├── Servers
+│   ├── Member Servers
+│   └── File Servers
+│
+└── Service Accounts
+
+### FILE01 Directory Structure
+FILE01
+├── C:\                  Windows Server OS
+├── D:\                  DVD Drive
+└── E:\                  FileServerData
+    └── Shares
+        ├── IT
+        ├── HR
+        ├── Finance
+        └── Public
