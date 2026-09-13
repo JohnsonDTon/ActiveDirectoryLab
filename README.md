@@ -39,8 +39,7 @@ ADLAB.TEST
 │
 └── Service Accounts
 
-### FILE01 Directory Structure
-FILE01
+FILE01 Directory Structure
 ├── C:\                  Windows Server OS
 ├── D:\                  DVD Drive
 └── E:\                  FileServerData
