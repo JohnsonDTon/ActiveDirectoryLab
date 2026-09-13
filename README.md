@@ -38,8 +38,10 @@ ADLAB.TEST
 │   └── File Servers
 │
 └── Service Accounts
+```
 
-FILE01 Directory Structure
+### FILE01 Directory Structure
+``` text
 ├── C:\                  Windows Server OS
 ├── D:\                  DVD Drive
 └── E:\                  FileServerData
@@ -48,3 +50,4 @@ FILE01 Directory Structure
         ├── HR
         ├── Finance
         └── Public
+```
