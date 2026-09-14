@@ -53,6 +53,7 @@ ADLAB.TEST
 ```
 
 ### Security Group
+```text
 ADLAB.TEST
 │
 └── Security Groups
@@ -76,3 +77,4 @@ ADLAB.TEST
         ├── DL-FILE01-Public-Read
         ├── DL-FILE01-Public-Modify
         └── DL-FILE01-Public-Full
+```
