@@ -51,3 +51,28 @@ ADLAB.TEST
         ├── Finance
         └── Public
 ```
+
+### Security Group
+ADLAB.TEST
+│
+└── Security Groups
+    │
+    ├── Global
+    │   ├── GG-All-Employees
+    │   ├── GG-IT-Users
+    │   ├── GG-HR-Users
+    │   └── GG-Finance-Users
+    │
+    └── Domain Local
+        ├── DL-FILE01-IT-Read
+        ├── DL-FILE01-IT-Modify
+        ├── DL-FILE01-IT-Full
+        ├── DL-FILE01-HR-Read
+        ├── DL-FILE01-HR-Modify
+        ├── DL-FILE01-HR-Full
+        ├── DL-FILE01-Finance-Read
+        ├── DL-FILE01-Finance-Modify
+        ├── DL-FILE01-Finance-Full
+        ├── DL-FILE01-Public-Read
+        ├── DL-FILE01-Public-Modify
+        └── DL-FILE01-Public-Full
