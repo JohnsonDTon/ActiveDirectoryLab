@@ -78,3 +78,22 @@ ADLAB.TEST
         ├── DL-FILE01-Public-Modify
         └── DL-FILE01-Public-Full
 ```
+
+### Access Control List Design for File Server
+```text
+IT
+SMB  → Authenticated Users → Full Control
+NTFS → DL-FILE01-IT-Modify → Modify
+
+HR
+SMB  → Authenticated Users → Full Control
+NTFS → DL-FILE01-HR-Modify → Modify
+
+Finance
+SMB  → Authenticated Users → Full Control
+NTFS → DL-FILE01-Finance-Modify → Modify
+
+Public
+SMB  → Authenticated Users → Full Control
+NTFS → DL-FILE01-Public-Read → Read & Execute
+```
