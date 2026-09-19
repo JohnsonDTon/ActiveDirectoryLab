@@ -14,7 +14,7 @@ DHCP Scope: 192.168.100.50 - 192.168.100.254
 | DC1 | Primary Domain Controller | 192.168.100.10 |
 | DC2 | Secondary Domain Controller | 192.168.100.11 |
 | FILE01 | File Server | 192.168.100.20 |
-| CLIENTx | Domain-Joined Computer(s) | DHCP |
+| WIN11-## | Domain-Joined Computer(s) | DHCP |
 
 ### OU Structure
 
