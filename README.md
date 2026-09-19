@@ -15,6 +15,8 @@ DHCP Scope: 192.168.100.50 - 192.168.100.254
 | DC2 | Secondary Domain Controller | 192.168.100.11 |
 | FILE01 | File Server | 192.168.100.20 |
 | WIN11-01 | Windows 11 Client | 192.168.100.101 |
+| WIN11-02 | Windows 11 Client | 192.168.100.102 |
+| WIN11-03 | Windows 11 Client | 192.168.100.103 |
 
 ### OU Structure
 
