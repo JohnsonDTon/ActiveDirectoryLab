@@ -3,7 +3,7 @@ Personal Sandbox notes for my Active Directory Lab. Will write notes here on wha
 Will use powershell and avoid doing things via GUI as much as possible. </br>
 
 This lab is in progress. I use Windows Server 2025 Standard Edition and Windows 11 Pro for end-users in this lab. <br>
-Workgroup client name will be "EndUser" during Client VM creations.
+Workgroup client name will be "EndUser" and passwordless during Client VM creations.
 
 ### Network Layout
 Domain: adlab.test / ADLAB <br>
