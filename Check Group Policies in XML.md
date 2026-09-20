@@ -1,0 +1,11 @@
+This assumes you have a C:\Temp folder, otherwise do a path thats for your enviornment. <br>
+Run on your DC.
+
+```powershell
+Get-GPO -Name "Default Domain Policy" |
+    Get-GPOReport -ReportType Html -Path "C:\Temp\DefaultDomainPolicy.html"
+```
+
+```powershell
+Start-Process "C:\Temp\DefaultDomainPolicy.html"
+```
