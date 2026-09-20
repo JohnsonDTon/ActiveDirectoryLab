@@ -12,8 +12,8 @@ DHCP Scope: 192.168.100.50 - 192.168.100.254
 
 | System | Role | IP Address |
 |---|---|---|
-| DC1 (w/DNS) | Primary Domain Controller | 192.168.100.10 |
-| DC2 (w/DNS) | Secondary Domain Controller | 192.168.100.11 |
+| DC1 | Primary Domain Controller (w/DNS) | 192.168.100.10 |
+| DC2 | Secondary Domain Controller (w/DNS) | 192.168.100.11 |
 | FILE01 | File Server | 192.168.100.20 |
 | WIN11-01 | Windows 11 Client | 192.168.100.101 |
 | WIN11-02 | Windows 11 Client | 192.168.100.102 |
