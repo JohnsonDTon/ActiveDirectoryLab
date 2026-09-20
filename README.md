@@ -82,6 +82,29 @@ ADLAB.TEST
         └── DL-FILE01-Public-Full
 ```
 
+Testing this NTFS format
+```text
+E:\Shares\IT
+    ├── Administrators      Full Control
+    ├── SYSTEM              Full Control
+    └── DL-FILE01-IT-Modify Modify
+
+E:\Shares\HR
+    ├── Administrators      Full Control
+    ├── SYSTEM              Full Control
+    └── DL-FILE01-HR-Modify Modify
+
+E:\Shares\Finance
+    ├── Administrators      Full Control
+    ├── SYSTEM              Full Control
+    └── DL-FILE01-Finance-Modify Modify
+
+E:\Shares\Public
+    ├── Administrators      Full Control
+    ├── SYSTEM              Full Control
+    └── DL-FILE01-Public-Read Read
+```
+
 ### Access Control List Design for File Server
 ```text
 IT
