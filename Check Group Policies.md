@@ -1,3 +1,4 @@
+Check Group Policies in XML. <br>
 This assumes you have a C:\Temp folder, otherwise do a path thats for your enviornment. <br>
 Run on your DC.
 
@@ -9,3 +10,5 @@ Get-GPO -Name "Default Domain Policy" |
 ```powershell
 Start-Process "C:\Temp\DefaultDomainPolicy.html"
 ```
+
+<br> <br>
