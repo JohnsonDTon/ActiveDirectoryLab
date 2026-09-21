@@ -12,3 +12,8 @@ Start-Process "C:\Temp\DefaultDomainPolicy.html"
 ```
 
 <br> <br>
+Check applied GPOs on a windows client. Run in admin powershell.
+```powershell
+gpupdate /force
+gpresult /r /scope computer
+```
