@@ -1,4 +1,4 @@
-Check Group Policies in XML. <br>
+Check Group Policies in XML. Change the GPO name based on which one you're examining<br>
 This assumes you have a C:\Temp folder, otherwise do a path thats for your enviornment. <br>
 Run on your DC.
 
