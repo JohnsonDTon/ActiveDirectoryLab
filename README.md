@@ -81,7 +81,7 @@ ADLAB.TEST
         └── DL-FILE01-Public-Full
 ```
 
-Testing this NTFS format
+### Testing this NTFS format
 ```text
 E:\Shares\IT
     ├── Administrators      Full Control
@@ -121,4 +121,53 @@ NTFS → DL-FILE01-Finance-Modify → Modify
 Public
 SMB  → Authenticated Users → Full Control
 NTFS → DL-FILE01-Public-Read → Read & Execute
+```
+
+### GPO Architecture
+```text
+DEFAULT DOMAIN POLICY
+│
+├── Password Policy
+│   ├── Minimum length = 12
+│   ├── History = 24
+│   ├── Maximum age = 90 days
+│   └── Complexity = Enabled
+│
+└── Account Lockout
+    ├── Threshold = 5
+    ├── Duration = 15 min
+    └── Observation = 15 min
+```
+
+## Workstations
+```text
+Workstations OU
+│
+├── Workstations - Security Baseline
+│   └── UAC
+│
+├── Workstations - Firewall
+│   ├── Firewall enabled
+│   ├── Inbound = Block
+│   ├── Outbound = Allow
+│   ├── Firewall logging
+│   └── Firewall rules
+│
+├── Workstations - Screen Lock
+│   └── Machine inactivity limit = 900 sec
+│
+└── Workstations - PowerShell Logging
+    ├── Script Block Logging
+    ├── Module Logging
+    └── PowerShell Transcription
+```
+
+## Users
+```text
+User Accounts OU
+│
+└── Users - Screen Saver
+    ├── Screen saver enabled
+    ├── Password protected
+    └── Timeout = 900 sec
 ```
