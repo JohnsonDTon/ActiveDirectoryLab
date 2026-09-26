@@ -139,7 +139,7 @@ DEFAULT DOMAIN POLICY
     └── Observation = 15 min
 ```
 
-## Workstations
+## Workstations GPO
 ```text
 Workstations OU
 │
@@ -162,7 +162,7 @@ Workstations OU
     └── PowerShell Transcription
 ```
 
-## Users
+## Users GPO
 ```text
 User Accounts OU
 │
