@@ -156,10 +156,43 @@ Workstations OU
 ├── Workstations - Screen Lock
 │   └── Machine inactivity limit = 900 sec
 │
-└── Workstations - PowerShell Logging
-    ├── Script Block Logging
-    ├── Module Logging
-    └── PowerShell Transcription
+├── Workstations - PowerShell Logging
+│   ├── Script Block Logging
+│   ├── Module Logging
+│   └── PowerShell Transcription
+│
+├── Workstations - Defender
+│   ├── Real-time Protection
+│   ├── Behavior Monitoring
+│   ├── IOAV Protection
+│   ├── Cloud-Delivered Protection
+│   ├── Sample Submission
+│   ├── PUA Protection
+│   ├── Cloud Block Level
+│   ├── Removable Drive Scanning
+│   ├── Network File Scanning
+│   └── Scheduled Quick Scan
+│
+└── Workstations - Advanced Auditing
+    ├── Account Logon
+    │   └── Credential Validation
+    │
+    ├── Logon/Logoff
+    │   ├── Logon
+    │   ├── Logoff
+    │   ├── Account Lockout
+    │   └── Special Logon
+    │
+    ├── Detailed Tracking
+    │   └── Process Creation
+    │
+    ├── Account Management
+    │   ├── User Account Management
+    │   ├── Security Group Management
+    │   └── Computer Account Management
+    │
+    └── Policy Change
+        └── Audit Policy Change
 ```
 
 ## Users GPO
