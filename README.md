@@ -123,6 +123,16 @@ SMB  → Authenticated Users → Full Control
 NTFS → DL-FILE01-Public-Read → Read & Execute
 ```
 
+### User Accounts
+```text
+| User  | Full Name               | Department / OU |
+| ----- | ----------------------- | --------------- |
+| Alice | **Alice Marie Johnson** | IT              |
+| Bob   | **Bob Thomas Smith**    | HR              |
+| Carol | **Carol Davis**         | Finance         |
+| David | **David James Wilson**  | Standard Users  |
+```
+
 ### GPO Architecture
 ```text
 DEFAULT DOMAIN POLICY
