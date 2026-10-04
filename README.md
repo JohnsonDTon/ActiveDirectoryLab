@@ -162,6 +162,7 @@ Workstations OU
 │   ├── Outbound = Allow
 │   ├── Firewall logging
 │   └── Firewall rules
+│       └── Allow RDP - TCP 3389
 │
 ├── Workstations - Screen Lock
 │   └── Machine inactivity limit = 900 sec
