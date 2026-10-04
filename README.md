@@ -162,6 +162,7 @@ Workstations OU
 │   ├── Outbound = Allow
 │   ├── Firewall logging
 │   └── Firewall rules
+│       ├── Allow ICMPv4 Echo Request
 │       └── Allow RDP - TCP 3389
 │
 ├── Workstations - Screen Lock
