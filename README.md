@@ -183,34 +183,48 @@ Workstations OU
 │   ├── Network File Scanning
 │   └── Scheduled Quick Scan
 │
-└── Workstations - Advanced Auditing
-    ├── Account Logon
-    │   └── Credential Validation
-    │
-    ├── Logon/Logoff
-    │   ├── Logon
-    │   ├── Logoff
-    │   ├── Account Lockout
-    │   └── Special Logon
-    │
-    ├── Detailed Tracking
-    │   └── Process Creation
-    │
-    ├── Account Management
-    │   ├── User Account Management
-    │   ├── Security Group Management
-    │   └── Computer Account Management
-    │
-    └── Policy Change
-        └── Audit Policy Change
+├── Workstations - Advanced Auditing
+│   ├── Account Logon
+│   │   └── Credential Validation
+│   │
+│   ├── Logon/Logoff
+│   │   ├── Logon
+│   │   ├── Logoff
+│   │   ├── Account Lockout
+│   │   └── Special Logon
+│   │
+│   ├── Detailed Tracking
+│   │   └── Process Creation
+│   │
+│   ├── Account Management
+│   │   ├── User Account Management
+│   │   ├── Security Group Management
+│   │   └── Computer Account Management
+│   │
+│   └── Policy Change
+│       └── Audit Policy Change
+│
+├── Workstations - RDP
+│   ├── RDP enabled
+│   └── Network Level Authentication (NLA) required
+│
+└── Workstations - Local Administrators
+    └── GG-IT-Admins
+        └── Local Administrators group
 ```
 
 ## Users GPO
 ```text
 User Accounts OU
 │
-└── Users - Screen Saver
-    ├── Screen saver enabled
-    ├── Password protected
-    └── Timeout = 900 sec
+├── Users - Screen Saver
+│   ├── Screen saver enabled
+│   ├── Password protected
+│   └── Timeout = 900 sec
+│
+└── Users - Network Drives
+    ├── P: → \\FILE01\Public
+    ├── I: → \\FILE01\IT
+    ├── H: → \\FILE01\HR
+    └── F: → \\FILE01\Finance
 ```
