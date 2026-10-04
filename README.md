@@ -125,12 +125,14 @@ NTFS → DL-FILE01-Public-Read → Read & Execute
 
 ### User Accounts
 ```text
-| User  | Full Name               | Department / OU |
-| ----- | ----------------------- | --------------- |
-| Alice | **Alice Marie Johnson** | IT              |
-| Bob   | **Bob Thomas Smith**    | HR              |
-| Carol | **Carol Davis**         | Finance         |
-| David | **David James Wilson**  | Standard Users  |
+| Account          | Full Name                 | Account Type     | OU             |
+| ---------------- | ------------------------- | ---------------- | -------------- |
+| `alice.johnson`  | Alice Marie Johnson       | Standard User    | IT             |
+| `3alice.johnson` | Alice Marie Johnson Admin | Privileged Admin | IT             |
+| `bob.smith`      | Bob Thomas Smith          | Standard User    | HR             |
+| `carol.davis`    | Carol Davis               | Standard User    | Finance        |
+| `david.wilson`   | David James Wilson        | Standard User    | Standard Users |
+
 ```
 
 ### GPO Architecture
