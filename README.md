@@ -169,12 +169,14 @@ Workstations OU
 ├── Workstations - Screen Lock
 │   └── Machine inactivity limit = 900 sec
 │
-├── Workstations - PowerShell Logging
-│   ├── Script Block Logging
-│   ├── Module Logging
-│   └── PowerShell Transcription
+├── Workstations - Local Administrators
+│   └── GG-IT-Admins
+│       └── Local Administrators group
 │
-├── Workstations - Defender
+├── Workstations - Windows LAPS
+│   └── Local Administrator password management
+│
+├── Workstations - Windows Defender
 │   ├── Real-time Protection
 │   ├── Behavior Monitoring
 │   ├── IOAV Protection
@@ -185,6 +187,18 @@ Workstations OU
 │   ├── Removable Drive Scanning
 │   ├── Network File Scanning
 │   └── Scheduled Quick Scan
+│
+├── Workstations - Defender ASR
+│   ├── Attack Surface Reduction enabled
+│   ├── Block credential stealing from LSASS
+│   ├── Block abuse of exploited vulnerable signed drivers
+│   └── Block persistence through WMI event subscription
+│
+├── Workstations - Windows Logging
+│   ├── Security log = 128 MB
+│   ├── System log = 64 MB
+│   ├── Application log = 64 MB
+│   └── Retention = Overwrite events as needed
 │
 ├── Workstations - Advanced Auditing
 │   ├── Account Logon
@@ -207,13 +221,14 @@ Workstations OU
 │   └── Policy Change
 │       └── Audit Policy Change
 │
-├── Workstations - RDP
-│   ├── RDP enabled
-│   └── Network Level Authentication (NLA) required
+├── Workstations - PowerShell Logging
+│   ├── Script Block Logging
+│   ├── Module Logging
+│   └── PowerShell Transcription
 │
-└── Workstations - Local Administrators
-    └── GG-IT-Admins
-        └── Local Administrators group
+└── Workstations - RDP
+    ├── RDP enabled
+    └── Network Level Authentication (NLA) required
 ```
 
 ## Users GPO
