@@ -11,6 +11,7 @@ DHCP Scope: 192.168.100.50 - 192.168.100.254
 
 | System | Role | IP Address |
 |---|---|---|
+| OPNSENSE01 | Lab Firewall / Default Gateway | 192.168.100.1 |
 | DC01 | Primary Domain Controller (w/DNS) | 192.168.100.10 |
 | DC02 | Secondary Domain Controller (w/DNS) | 192.168.100.11 |
 | FILE01 | File Server | 192.168.100.20 |
