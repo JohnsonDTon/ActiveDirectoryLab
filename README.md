@@ -194,6 +194,11 @@ Workstations OU
 │   ├── Block abuse of exploited vulnerable signed drivers
 │   └── Block persistence through WMI event subscription
 │
+├── Workstations - BitLocker
+│   └── Operating System Drives
+│       ├── Recovery keys saved to AD DS
+│       └── BitLocker not enabled until backup succeeds
+│
 ├── Workstations - Windows Logging
 │   ├── Security log = 128 MB
 │   ├── System log = 64 MB
@@ -203,21 +208,17 @@ Workstations OU
 ├── Workstations - Advanced Auditing
 │   ├── Account Logon
 │   │   └── Credential Validation
-│   │
 │   ├── Logon/Logoff
 │   │   ├── Logon
 │   │   ├── Logoff
 │   │   ├── Account Lockout
 │   │   └── Special Logon
-│   │
 │   ├── Detailed Tracking
 │   │   └── Process Creation
-│   │
 │   ├── Account Management
 │   │   ├── User Account Management
 │   │   ├── Security Group Management
 │   │   └── Computer Account Management
-│   │
 │   └── Policy Change
 │       └── Audit Policy Change
 │
@@ -226,9 +227,9 @@ Workstations OU
 │   ├── Module Logging
 │   └── PowerShell Transcription
 │
-└── Workstations - RDP
-    ├── RDP enabled
-    └── Network Level Authentication (NLA) required
+├── Workstations - RDP
+│   ├── RDP enabled
+│   └── Network Level Authentication (NLA) required
 ```
 
 ## Users GPO
