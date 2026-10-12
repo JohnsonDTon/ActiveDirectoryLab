@@ -66,7 +66,7 @@ ADLAB.TEST
     │   ├── GG-HR-Users
     │   └── GG-Finance-Users
     │
-    └── Domain Local
+    └── Domain Local (most of these are not used/configured)
         ├── DL-FILE01-IT-Read
         ├── DL-FILE01-IT-Modify
         ├── DL-FILE01-IT-Full
