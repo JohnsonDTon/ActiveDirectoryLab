@@ -102,3 +102,46 @@ Get-ItemProperty `
     -Path "HKLM:\SOFTWARE\Microsoft\Update Services\Server\Setup" |
     Select-Object SqlServerName, SqlDatabaseName, ContentDir
 ```
+
+Configure Initial Configurations
+```text
+Open Windows Server Update Services
+Expand WSUS01
+Options
+WSUS Server Configuration Wizard
+
+Before You Begin -> Next
+Microsoft Update Improvement Program -> uncheck -> Next
+Choose Upstream Server -> Synchronize from Microsoft Update -> Next
+Specify Proxy Server -> leave unchecked -> Next
+Connect to Upstream Server -> Start Connecting -> wait for it to finish -> Next
+Choose Languages -> Download updates only in these languages: English -> Next
+Choose Products -> uncheck everything, then check only "Windows 11" -> Next
+Choose Classifications -> Critical Updates, Security Updates, Definition Updates -> Next
+Configure Sync Schedule -> Synchronize manually -> Next
+Finish -> uncheck "Begin initial synchronization"
+```
+
+Let WSUS know clients are configured by GPOs.
+```text
+Open Windows Server Update Services
+Expand WSUS01
+Options -> Computers
+Select: Use Group Policy or registry settings on computers
+OK
+```
+
+Create a computer group in WSUS
+```text
+Open Windows Server Update Services
+Expand WSUS01
+Computers -> All Computers
+Add Computer Group
+Name: Workstations
+
+```
+
+Sync updates
+```text
+Right click Synchronizations -> Synchronize Now
+```
