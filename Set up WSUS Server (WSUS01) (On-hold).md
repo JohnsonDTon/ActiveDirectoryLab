@@ -1,10 +1,7 @@
-Note: WSUS is being depreciated by Microsoft. But I'm going to run it on my on-perm lab for now and use Windows AutoPatch in my future Cloud lab. <br>
-This setup is on hold. WSUS is not up-to-date without internet so have to configure internet on my lab before I continue with WSUS <br>  <br>
+Note: WSUS is being depreciated by Microsoft. But I'm going to run it on my on-perm lab for now and use Windows AutoPatch in my future Cloud lab. <br><br>
 
 Run this on a fresh (and named) Windows Server VM that you'd making it to be your WSUS Server. <br>
-Reference: https://github.com/JohnsonDTon/ActiveDirectoryLab/blob/main/3.%20Create%20VM.md <br>
 Make sure the IP/DNS is configured <br>
-Reference: https://github.com/JohnsonDTon/ActiveDirectoryLab/blob/main/4.%20Configure%20IP.md
 
 Join WSUS01 to domain. Run on WSUS01.
 ```powershell
@@ -104,28 +101,4 @@ Get-ItemProperty `
 Get-ItemProperty `
     -Path "HKLM:\SOFTWARE\Microsoft\Update Services\Server\Setup" |
     Select-Object SqlServerName, SqlDatabaseName, ContentDir
-```
-
-<br>
-
-Configure Update Source and Proxy Server
-```text
-Open Windows Servers Update Services
-Expand WSUS01
-Click Options
-Click Update Source and Proxy Server
-
-Select:
-Synchronize from Microsoft Update
-Do not select "This server is a replica of the upstream server"
-
-Proxy: Leave Use a proxy server when synchronizing unchecked.
-Click OK.
-```
-
-Sync Updates
-```text
-Open Windows Servers Update Services
-Expand WSUS01
-Right click Synchronizations -> Synchronize Now
 ```
