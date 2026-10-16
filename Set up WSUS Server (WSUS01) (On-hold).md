@@ -206,9 +206,10 @@ Test-NetConnection WSUS01 -Port 8530
 ```powershell
 gpupdate /force
 Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" | Select-Object WUServer, WUStatusServer, TargetGroup
+Settings -> Windows Update -> Check for updates
 ```
 ```text
 On WSUS01, open Update Services
 WSUS extend -> Computers -> All Computers -> Workstations
-Check if WIN11-01/WIN11-02 is listed
+Check if WIN11-01/WIN11-02 is listed (takes up to 30 minutes to show once you check for updates on client)
 ```
