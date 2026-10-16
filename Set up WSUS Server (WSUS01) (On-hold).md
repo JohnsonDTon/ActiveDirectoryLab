@@ -141,7 +141,7 @@ Name: Workstations
 
 ```
 
-Sync updates
+Sync updates. Once done it should say 'succeeded' with hundreds+ updates
 ```text
 Right click Synchronizations -> Synchronize Now
 ```
