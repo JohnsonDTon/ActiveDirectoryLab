@@ -15,6 +15,7 @@ DHCP Scope: 192.168.100.50 - 192.168.100.254
 | DC01 | Primary Domain Controller (w/DNS + DHCP) | 192.168.100.10 |
 | DC02 | Secondary Domain Controller (w/DNS + DHCP) | 192.168.100.11 |
 | FILE01 | File Server | 192.168.100.20 |
+| WSUS01 | Windows Update Server (WSUS) | 192.168.100.21 |
 | WIN11-01 | Windows 11 Client | DHCP address |
 | WIN11-02 | Windows 11 Client | DHCP address |
 
@@ -231,6 +232,16 @@ Workstations OU
 ├── Workstations - RDP
 │   ├── RDP enabled
 │   └── Network Level Authentication (NLA) required
+│
+└── Workstations - Windows Update
+    ├── Configure Automatic Updates
+    │   ├── Auto download and schedule the install
+    │   └── Install daily at 03:00
+    ├── Active hours = 08:00 - 18:00
+    ├── Target release version = Windows 11 24H2
+    ├── Intranet update service = http://WSUS01.adlab.test:8530
+    ├── Client-side targeting = Workstations
+    └── Do not connect to Windows Update Internet locations
 ```
 
 ## Users GPO
