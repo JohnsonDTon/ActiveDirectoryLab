@@ -1,5 +1,3 @@
-Note: WSUS is being depreciated by Microsoft. But I'm going to run it on my on-perm lab for now and use Windows AutoPatch in my future Cloud lab. <br><br>
-
 Run this on a fresh (and named) Windows Server VM that you'd making it to be your WSUS Server. <br>
 Make sure the IP/DNS is configured <br>
 
