@@ -164,6 +164,12 @@ Point clients to WSUS. Run on DC
 Set-GPRegistryValue `
     -Name "Workstations - Windows Update" `
     -Key "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" `
+    -ValueName "DoNotConnectToWindowsUpdateInternetLocations" -Type DWord -Value 1
+```
+```powershell
+Set-GPRegistryValue `
+    -Name "Workstations - Windows Update" `
+    -Key "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" `
     -ValueName "WUServer" -Type String -Value "http://WSUS01.adlab.test:8530"
 ```
 ```powershell
@@ -191,4 +197,18 @@ Set-GPRegistryValue `
     -Name "Workstations - Windows Update" `
     -Key "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" `
     -ValueName "TargetGroup" -Type String -Value "Workstations"
+```
+
+Verify on client
+```powershell
+Test-NetConnection WSUS01 -Port 8530
+```
+```powershell
+gpupdate /force
+Restart-Computer
+```
+```text
+On WSUS01, open Update Services
+WSUS extend -> Computers -> All Computers -> Workstations
+Check if WIN11-01/WIN11-02 is listed
 ```
