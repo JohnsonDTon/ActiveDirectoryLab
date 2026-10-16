@@ -145,3 +145,50 @@ Sync updates
 ```text
 Right click Synchronizations -> Synchronize Now
 ```
+
+Set up automatic approval <br>
+Without this means you'd have to manually approve each one
+```text
+Options -> Automatic Approvals
+New Rule...
+Check: When an update is in a specific classification
+    Select: Critical Updates, Security Updates
+Check: Approve the update for a specific computer group
+    Select: Workstations
+Name: Auto-approve Critical and Security
+OK -> check "Enable rule" -> Run rule
+```
+
+Point clients to WSUS. Run on DC
+```powershell
+Set-GPRegistryValue `
+    -Name "Workstations - Windows Update" `
+    -Key "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" `
+    -ValueName "WUServer" -Type String -Value "http://WSUS01.adlab.test:8530"
+```
+```powershell
+Set-GPRegistryValue `
+    -Name "Workstations - Windows Update" `
+    -Key "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" `
+    -ValueName "WUStatusServer" -Type String -Value "http://WSUS01.adlab.test:8530"
+```
+```powershell
+Set-GPRegistryValue `
+    -Name "Workstations - Windows Update" `
+    -Key "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" `
+    -ValueName "UseWUServer" -Type DWord -Value 1
+```
+
+Add group targetting to Workstations
+```powershell
+Set-GPRegistryValue `
+    -Name "Workstations - Windows Update" `
+    -Key "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" `
+    -ValueName "TargetGroupEnabled" -Type DWord -Value 1
+```
+```powershell
+Set-GPRegistryValue `
+    -Name "Workstations - Windows Update" `
+    -Key "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" `
+    -ValueName "TargetGroup" -Type String -Value "Workstations"
+```
