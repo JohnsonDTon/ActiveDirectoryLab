@@ -238,7 +238,7 @@ Workstations OU
     │   ├── Auto download and schedule the install
     │   └── Install daily at 03:00
     ├── Active hours = 08:00 - 18:00
-    ├── Target release version = Windows 11 24H2
+    ├── Target release version = Windows 11 25H2
     ├── Intranet update service = http://WSUS01.adlab.test:8530
     ├── Client-side targeting = Workstations
     └── Do not connect to Windows Update Internet locations
