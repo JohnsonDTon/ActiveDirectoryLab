@@ -20,7 +20,7 @@ Create a second VHDX. Run on Hyper-V Host.
 ```powershell
 New-VHD `
     -Path "E:\ActiveDirectoryLab\WSUS01\WSUS-Content.vhdx" `
-    -SizeBytes 150GB `
+    -SizeBytes 500GB `
     -Dynamic
 ```
 
