@@ -205,7 +205,7 @@ Test-NetConnection WSUS01 -Port 8530
 ```
 ```powershell
 gpupdate /force
-Restart-Computer
+Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" | Select-Object WUServer, WUStatusServer, TargetGroup
 ```
 ```text
 On WSUS01, open Update Services
