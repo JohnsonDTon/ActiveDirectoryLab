@@ -211,3 +211,43 @@ On WSUS01, open Update Services
 WSUS extend -> Computers -> All Computers -> Workstations
 Check if WIN11-01/WIN11-02 is listed (takes up to 30 minutes to show once you check for updates on client)
 ```
+
+To do maintenance manually. Check notes below to know what each thing does. Run on WSUS01 if needed, will just do scheduled maintenance instead.
+```text
+-CleanupObsoleteUpdates         deletes updates that are no longer needed
+-CleanupUnneededContentFiles    deletes downloaded files nothing needs (this frees the disk)
+-CompressUpdates                removes old revisions of updates
+-DeclineExpiredUpdates          declines updates Microsoft has expired
+-DeclineSupersededUpdates       declines updates replaced by newer ones
+```
+```powershell
+Get-WsusServer | Invoke-WsusServerCleanup `
+    -CleanupObsoleteUpdates `
+    -CleanupUnneededContentFiles `
+    -CompressUpdates `
+    -DeclineExpiredUpdates `
+    -DeclineSupersededUpdates
+```
+
+Set scheduled maintenace. Set to run sundays 4am.
+```powershell
+Register-ScheduledTask `
+    -TaskName "WSUS Weekly Cleanup" `
+    -Action (New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -Command `"Get-WsusServer | Invoke-WsusServerCleanup -CleanupObsoleteUpdates -CleanupUnneededContentFiles -CompressUpdates -DeclineExpiredUpdates -DeclineSupersededUpdates`"") `
+    -Trigger (New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At 4am) `
+    -User "SYSTEM" `
+    -RunLevel Highest
+```
+Verify
+```powershell
+Get-ScheduledTask -TaskName "WSUS Weekly Cleanup"
+```
+
+Force maintenace
+```powershell
+Start-ScheduledTask -TaskName "WSUS Weekly Cleanup"
+```
+Verify
+```powershell
+Get-ScheduledTaskInfo -TaskName "WSUS Weekly Cleanup" | Select-Object LastRunTime, LastTaskResult
+```
