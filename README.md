@@ -16,6 +16,7 @@ DHCP Scope: 192.168.100.50 - 192.168.100.254
 | DC02 | Secondary Domain Controller (w/DNS + DHCP) | 192.168.100.11 |
 | FILE01 | File Server | 192.168.100.20 |
 | WSUS01 | Windows Update Server (WSUS) | 192.168.100.21 |
+| WEC01 | Windows Event Collector (WEC) | 192.168.100.22 |
 | WIN11-01 | Windows 11 Client | DHCP address |
 | WIN11-02 | Windows 11 Client | DHCP address |
 
