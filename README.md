@@ -243,6 +243,10 @@ Workstations OU
     ├── Intranet update service = http://WSUS01.adlab.test:8530
     ├── Client-side targeting = Workstations
     └── Do not connect to Windows Update Internet locations
+└── Workstations - Event Forwarding
+    ├── Subscription manager = WEC01.adlab.test:5985
+    ├── Windows Remote Management service = Automatic
+    └── Network Service added to Event Log Readers
 ```
 
 ## Users GPO
