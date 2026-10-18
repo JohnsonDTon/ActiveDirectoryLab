@@ -12,7 +12,7 @@ DHCP Scope: 192.168.100.50 - 192.168.100.254
 | System | Role | IP Address |
 |---|---|---|
 | OPNSENSE01 | Lab Firewall / Default Gateway | 192.168.100.1 |
-| BACKUP01 | Backup Server (Not Domain-joined) | 192.168.100.5 |
+| BACKUP01 | Backup Server (Veeam) | 192.168.100.5 |
 | DC01 | Primary Domain Controller (w/DNS + DHCP) | 192.168.100.10 |
 | DC02 | Secondary Domain Controller (w/DNS + DHCP) | 192.168.100.11 |
 | FILE01 | File Server | 192.168.100.20 |
