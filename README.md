@@ -12,7 +12,7 @@ DHCP Scope: 192.168.100.50 - 192.168.100.254
 | System | Role | IP Address |
 |---|---|---|
 | OPNSENSE01 | Lab Firewall / Default Gateway | 192.168.100.1 |
-| BACKUP01 | Backup Server (Veeam) | 192.168.100.5 |
+| BACKUP01 | Backup Server (Veeam) - workgroup, not domain-joined | 192.168.100.5 |
 | DC01 | Primary Domain Controller (w/DNS + DHCP) | 192.168.100.10 |
 | DC02 | Secondary Domain Controller (w/DNS + DHCP) | 192.168.100.11 |
 | FILE01 | File Server | 192.168.100.20 |
@@ -82,6 +82,7 @@ ADLAB.TEST
         ├── DL-FILE01-Public-Read
         ├── DL-FILE01-Public-Modify
         └── DL-FILE01-Public-Full
+    └── Backup-Server-Admins   (local admin on member servers, for the Veeam service account)
 ```
 
 ### Testing this NTFS format
@@ -128,13 +129,15 @@ NTFS → DL-FILE01-Public-Read → Read & Execute
 
 ### User Accounts
 ```text
-| Account          | Full Name                 | Account Type     | OU             |
-| ---------------- | ------------------------- | ---------------- | -------------- |
-| `alice.johnson`  | Alice Marie Johnson       | Standard User    | IT             |
-| `3alice.johnson` | Alice Marie Johnson Admin | Privileged Admin | IT             |
-| `bob.smith`      | Bob Thomas Smith          | Standard User    | HR             |
-| `carol.davis`    | Carol Davis               | Standard User    | Finance        |
-| `david.wilson`   | David James Wilson        | Standard User    | Standard Users |
+| Account          | Full Name                 | Account Type     | OU               |
+| ---------------- | ------------------------- | ---------------- | ---------------- |
+| `alice.johnson`  | Alice Marie Johnson       | Standard User    | IT               |
+| `3alice.johnson` | Alice Marie Johnson Admin | Privileged Admin | IT               |
+| `bob.smith`      | Bob Thomas Smith          | Standard User    | HR               |
+| `carol.davis`    | Carol Davis               | Standard User    | Finance          |
+| `david.wilson`   | David James Wilson        | Standard User    | Standard Users   |
+| `svc-backup-srv` | Veeam member servers      | Service Account  | Service Accounts |
+| `svc-backup-dc`  | Veeam domain controllers  | Service Account  | Service Accounts |
 
 ```
 
@@ -152,6 +155,22 @@ DEFAULT DOMAIN POLICY
     ├── Threshold = 5
     ├── Duration = 15 min
     └── Observation = 15 min
+```
+
+## Users GPO
+```text
+User Accounts OU
+│
+├── Users - Screen Saver
+│   ├── Screen saver enabled
+│   ├── Password protected
+│   └── Timeout = 900 sec
+│
+└── Users - Network Drives
+    ├── P: → \\FILE01\Public
+    ├── I: → \\FILE01\IT
+    ├── H: → \\FILE01\HR
+    └── F: → \\FILE01\Finance
 ```
 
 ## Workstations GPO
@@ -235,33 +254,67 @@ Workstations OU
 │   ├── RDP enabled
 │   └── Network Level Authentication (NLA) required
 │
-└── Workstations - Windows Update
-    ├── Configure Automatic Updates
-    │   ├── Auto download and schedule the install
-    │   └── Install daily at 03:00
-    ├── Active hours = 08:00 - 18:00
-    ├── Target release version = Windows 11 25H2
-    ├── Intranet update service = http://WSUS01.adlab.test:8530
-    ├── Client-side targeting = Workstations
-    └── Do not connect to Windows Update Internet locations
+├── Workstations - Windows Update
+│   ├── Configure Automatic Updates
+│   │   ├── Auto download and schedule the install
+│   │   └── Install daily at 03:00
+│   ├── Active hours = 08:00 - 18:00
+│   ├── Target release version = Windows 11 25H2
+│   ├── Intranet update service = http://WSUS01.adlab.test:8530
+│   ├── Client-side targeting = Workstations
+│   └── Do not connect to Windows Update Internet locations
+│
 └── Workstations - Event Forwarding
     ├── Subscription manager = WEC01.adlab.test:5985
     ├── Windows Remote Management service = Automatic
-    └── Network Service added to Event Log Readers
+    └── Network Service added to Event Log Readers (Group Policy Preferences)
 ```
 
-## Users GPO
+### Servers GPO
 ```text
-User Accounts OU
+Servers OU
 │
-├── Users - Screen Saver
-│   ├── Screen saver enabled
-│   ├── Password protected
-│   └── Timeout = 900 sec
+└── Member Servers - Backup Access
+    └── ADLAB\Backup-Server-Admins added to local Administrators (GPP)
+
+Servers OU and Domain Controllers OU
 │
-└── Users - Network Drives
-    ├── P: → \\FILE01\Public
-    ├── I: → \\FILE01\IT
-    ├── H: → \\FILE01\HR
-    └── F: → \\FILE01\Finance
+├── Service Accounts - Deny Logon
+│   ├── Deny log on locally: svc-backup-srv, svc-backup-dc
+│   └── Deny log on through Remote Desktop Services: svc-backup-srv, svc-backup-dc
+│
+└── Servers - Veeam Firewall
+    ├── Allow TCP 135, 445 from BACKUP01
+    ├── Allow TCP 49152-65535 from BACKUP01
+    └── Allow TCP 6160, 6162, 10006 from BACKUP01
 ```
+
+**Backup and recovery section.** Fill in the retention you actually set:
+
+### Backup and Disaster Recovery
+```text
+BACKUP01 (workgroup, 192.168.100.5)
+├── Veeam Backup & Replication, Community Edition
+├── Repository: ReFS, 64 KB clusters (fast cloning), E:\Backups
+└── Encrypted backup files and encrypted configuration backup
+
+Protected servers (agent-based)
+├── DC01   → job: Lab Servers - DCs (application-aware)
+├── FILE01 → job: Lab Servers - Members
+├── WEC01  → job: Lab Servers - Members
+└── WSUS01 → job: Lab Servers - WSUS (content drive excluded)
+```
+
+| Account | Scope |
+|---|---|
+| `svc-backup-srv` | Local admin on FILE01, WSUS01, WEC01 (via GPO) |
+| `svc-backup-dc`  | Administrators on DC01 only |
+
+| Restore test | Result |
+|---|---|
+| Single file on FILE01 | Passed |
+| Deleted AD user (AD Recycle Bin) | Passed |
+| Deleted AD user (Veeam Explorer for AD) | Passed |
+| WEC01 disk export, booted on isolated switch | Passed |
+
+Lab limitations: backups share the host's physical drive (no off-host copy), and svc-backup-dc has Administrators rights on DC01. OPNsense is exported manually, since an agent can't run on it.
