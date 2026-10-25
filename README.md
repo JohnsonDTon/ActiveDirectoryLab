@@ -289,8 +289,6 @@ Servers OU and Domain Controllers OU
     └── Allow TCP 6160, 6162, 10006 from BACKUP01
 ```
 
-**Backup and recovery section.** Fill in the retention you actually set:
-
 ### Backup and Disaster Recovery
 ```text
 BACKUP01 (workgroup, 192.168.100.5)
