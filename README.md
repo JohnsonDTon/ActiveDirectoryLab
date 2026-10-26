@@ -1,7 +1,7 @@
 # ActiveDirectoryLab
 Personal Sandbox notes for my Active Directory Lab. Will write notes here on what I done, so in case I ever revisit these tasks on the job I have personal notes I can reference back to. </br>
 
-Summary:
+## Summary
 Active Directory Home Lab
 - Built a 9-VM Hyper-V environment primarily through PowerShell, including redundant Windows Server 2025 domain controllers with DNS and DHCP, a file server, WSUS, event collector and backup servers, an OPNsense firewall gateway, and domain-joined Windows 11 workstations; documented in a 40+ step runbook 
 - Designed an Active Directory domain with a structured OU hierarchy, AGDLP security groups, SMB/NTFS permissions with Access-Based Enumeration, and separate standard and privileged admin accounts to enforce least privilege 
