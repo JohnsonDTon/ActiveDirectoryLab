@@ -288,8 +288,54 @@ Workstations OU
 ```text
 Servers OU
 │
-└── Member Servers - Backup Access
-    └── ADLAB\Backup-Server-Admins added to local Administrators (GPP)
+├── Member Servers - Backup Access
+│   └── ADLAB\Backup-Server-Admins added to local Administrators (GPP)
+│
+├── Servers - Baseline Firewall
+│   ├── Firewall enabled (Domain, Private, Public), inbound = Block, outbound = Allow
+│   ├── Firewall logging (dropped packets)
+│   └── Firewall rules
+│       ├── Allow ICMPv4 Echo Request from lab subnet
+│       └── Allow remote management (TCP 135, 445, 49152-65535) from DC01
+│
+├── Servers - Windows Logging
+│   ├── Security log = 256 MB
+│   ├── System log = 64 MB
+│   ├── Application log = 64 MB
+│   └── Retention = Overwrite events as needed
+│
+├── Servers - Advanced Auditing
+│   ├── Advanced audit policy overrides legacy audit policy
+│   ├── Process creation includes command line (4688)
+│   ├── Account Logon
+│   │   └── Credential Validation
+│   ├── Account Management
+│   │   ├── User Account Management
+│   │   └── Security Group Management
+│   ├── Detailed Tracking
+│   │   └── Process Creation
+│   ├── Logon/Logoff
+│   │   ├── Logon
+│   │   ├── Logoff
+│   │   ├── Account Lockout
+│   │   └── Special Logon
+│   ├── Object Access
+│   │   └── File Share
+│   ├── Policy Change
+│   │   └── Audit Policy Change
+│   ├── Privilege Use
+│   │   └── Sensitive Privilege Use
+│   └── System
+│       ├── Security State Change
+│       └── System Integrity
+│
+├── Servers - PowerShell Logging
+│   ├── Script Block Logging
+│   └── Module Logging
+│
+└── Servers - Event Forwarding
+    ├── Subscription manager = WEC01.adlab.test:5985
+    └── Network Service added to Event Log Readers (GPP)
 
 Servers OU and Domain Controllers OU
 │
