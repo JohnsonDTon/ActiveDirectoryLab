@@ -7,11 +7,12 @@ Workgroup client name will be "EndUser" and passwordless during Client VM creati
 
 ## Summary
 Active Directory Home Lab
-- Built a 9-VM Hyper-V environment primarily through PowerShell, including redundant Windows Server 2025 domain controllers with DNS and DHCP, a file server, WSUS, event collector and backup servers, an OPNsense firewall gateway, and domain-joined Windows 11 workstations; documented in a 40+ step runbook 
+- Built a 9-VM Hyper-V environment primarily through PowerShell, including redundant Windows Server 2025 domain controllers with DNS and DHCP, a file server, WSUS, event collector and backup servers, an OPNsense firewall gateway, and domain-joined Windows 11 workstations; documented in a 45 step runbook 
 - Designed an Active Directory domain with a structured OU hierarchy, AGDLP security groups, SMB/NTFS permissions with Access-Based Enumeration, and separate standard and privileged admin accounts to enforce least privilege 
-- Deployed 19 GPOs across workstations, users and servers, including password and lockout policy, UAC, Windows Firewall, Windows LAPS for unique rotating local admin passwords, Microsoft Defender with ASR rules, and BitLocker with recovery keys escrowed to Active Directory
+- Deployed 24 GPOs across workstations, users and servers, including password and lockout policy, UAC, Windows Firewall, Windows LAPS for unique rotating local admin passwords, Microsoft Defender with ASR rules, server audit and logging baselines, and BitLocker with recovery keys escrowed to Active Directory
 - Configured and tested high availability for core services: took DC01 offline and confirmed domain logons and DNS still worked through DC02, and load-balanced DHCP failover across both domain controllers with a client receiving its lease from the partner server
-- Enabled Advanced Audit Policy and PowerShell Script Block/Module logging via Group Policy; forwards workstation logon (4624/4625) and script block (4104) events to a central Windows Event Collector server
+- Enabled Advanced Audit Policy and PowerShell logging via Group Policy on workstations and servers, forwarding logon, account-change and script block events to a central Windows Event Collector server
+
 
 Backup & Disaster Recovery Lab (Veeam)
 - Built a workgroup (non-domain-joined) Veeam backup server to keep backups isolated from AD; protected domain controllers and member servers with agent-based, encrypted daily jobs to a ReFS repository (64 KB clusters, Fast Clone), with application-aware (VSS) processing so Active Directory is captured consistently
