@@ -289,7 +289,7 @@ Workstations OU
 ```text
 Servers OU
 │
-├── Member Servers - Backup Access
+├── Servers - Backup Access
 │   └── ADLAB\Backup-Server-Admins added to local Administrators (GPP)
 │
 ├── Servers - Baseline Firewall
