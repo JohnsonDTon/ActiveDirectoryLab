@@ -17,3 +17,10 @@ Check applied GPOs on a windows client. Run in admin powershell, Windows Client 
 gpupdate /force
 gpresult /r /scope computer
 ```
+
+Check number of GPOs. Run in DC01
+```powershell
+Get-GPO -All |
+    Where-Object DisplayName -notlike "Default*" |
+    Measure-Object
+```
