@@ -337,6 +337,12 @@ Servers OU
 └── Servers - Event Forwarding
     ├── Subscription manager = WEC01.adlab.test:5985
     └── Network Service added to Event Log Readers (GPP)
+│
+└── Servers - Windows Update
+    ├── Updates from WSUS01.adlab.test:8530 (no Microsoft Update)
+    ├── Client-side targeting = Servers group
+    ├── Auto download, scheduled install (Sundays, 3 AM)
+    └── No automatic restart with signed-in users
 
 Servers OU and Domain Controllers OU
 │
